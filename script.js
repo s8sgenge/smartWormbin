@@ -58,3 +58,4 @@
     function getWidth2() {
       document.getElementById("width1").value = parseInt(document.getElementById("width2").value) - 3;
     }
+      
