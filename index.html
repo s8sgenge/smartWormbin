@@ -13,6 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 
 </head>
 
@@ -36,11 +37,22 @@
       </div>
     </div>
   </nav>
-
   <div class="jumbotron text-center">
-    <h1>IoT Smart Wormbin</h1>
+    <h1><span id="typed"></span></h1>
+    <span id="typed"></span>
     <p>Get blueprints to build your own bin or monitor mine </p>
   </div>
+  <script> 
+  $('document').ready(function(){
+    var typed = new Typed('#typed',{
+      strings:["IoT Smart Wormbin."],
+      typeSpeed: 80,
+      callback: function () {
+                $(".typed-cursor").hide();
+  }
+    });
+  });
+  </script>
 
   <!-- Container (About Section) -->
   <div id="about" class="container-fluid">
