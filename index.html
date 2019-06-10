@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>IoT Smart Wormbin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+</head>
+
+<body id="index" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#data_visualization">DATA VISUALIZATION</a></li>
+          <li><a href="#blueprint">BLUEPRINT</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron text-center">
+    <h1>IoT Smart Wormbin</h1>
+    <p>Get blueprints to build your own bin or monitor mine </p>
+  </div>
+
+  <!-- Container (About Section) -->
+  <div id="about" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>About the Smart Wormbin</h2><br>
+        <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</h4><br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+          enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div class="col-sm-4">
+          <img src="worm.png" alt="Smiley face" height="390" width="">
+      </div>
+    </div>
+  </div>
+
+  <!-- Container (Data Visualization Section) -->
+  <div id="data_visualization" class="container-fluid text-center bg-grey">
+    <h2>Data Visualization</h2>
+    <h4>Download the .json or .csv file and get creative</h4>
+    <br>
+    <div class = "dv">
+    <button class="btn btn-lg slideanim"><span class="glyphicon glyphicon-download-alt"></span> Download .json</button> 
+    <button class="btn btn-lg slideanim"><span class="glyphicon glyphicon-download-alt"></span> Download .csv</button>
+	<br>
+	<br>
+</canvas><canvas id="testChart"></canvas>
+<script>var ctx = document.getElementById('testChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+	  type: 'line',
+	  data: {
+		labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+		datasets: [{
+		  label: 'Temperature °C',
+		  data: [12, 19, 3, 17, 6, 3, 7],
+		  backgroundColor: "rgba(105, 190, 148,0.4)"
+		}, {
+		  label: 'Moisture g/m3',
+		  data: [2, 29, 5, 5, 2, 3, 10],
+		  backgroundColor: "rgba(105, 190, 148,0.4)"
+		}]
+	  }
+	});</script>
+  </div>
+  </div>
+    
+
+  <!-- Container (Blueprint Section) -->
+  <div id="blueprint" class="container-fluid">
+    <div class="text-center">
+      <h2>Blueprint</h2>
+      <h4>Get all the materials and tools together and start building your own wormbin</h4>
+    </div>
+    <div class="row slideanim">
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Materials</h1>
+          </div>
+          <div class="panel-body al">
+            <p><strong>2 x</strong> Wood panel, <input type="number" id="height" value="46" onblur="getHeight()"> cm x <input type="number" id="width" value="80" onblur="getWidth()"> cm, x 1.5 cm</p>
+            <p><strong>2 x</strong> Wood panel, <input type="number" id="height1" value="32" onblur="getHeight1()"> cm x <input type="number" id="width1" value="77" onblur="getWidth1()"> cm x 1.5 cm</p>
+            <p><strong>2 x</strong> Wood panel, <input type="number" id="height2" value="46" onblur="getHeight2()"> cm x <input type="number" id="width2" value="35" onblur="getHeight1()"> cm x 2 cm</p>
+            <p><strong>16 x</strong> Wooden strip (ca 15 cm x 3 cm x 3 cm)</p>
+            <p><strong>1 x</strong> Aviary mesh</p>
+            <p><strong>2 x</strong> Furniture hinge</p>
+            <p><strong>Min 80 x</strong> Wood screw</p>
+            <p><strong>500 x</strong> Compostworm</p>
+          </div>
+          <div class="panel-footer">
+            <h4>Can be found in your local building supply store</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Tools</h1>
+          </div>
+          <div class="panel-body">
+            <p><strong>•</strong> Drill</p>
+            <p><strong>•</strong> (Electric) Screwdriver</p>
+            <p><strong>•</strong> Stapler</p>
+            <p><strong>•</strong> (Optional) Angle grinder</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+          </div>
+          <div class="panel-footer">
+            <h4>I bet you know someone, who can help you out</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <div class="panel panel-default text-center">
+          <div class="panel-heading">
+            <h1>Augmentation</h1>
+          </div>
+          <div class="panel-body">
+            <p><strong>•</strong> Arduino UNO</p>
+            <p><strong>•</strong> Temperature sensor</p>
+            <p><strong>•</strong> Moisture sensor</p>
+            <p><strong>•</strong> Weight sensor</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+          </div>
+          <div class="panel-footer">
+            <h4>Easy to build, you can find the needed code below</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <iframe id="fac5c187-3605-4d85-b77c-fe8ff202911a" src="https://www.vectary.com/embed/viewer/v1/viewer.html?model=fac5c187-3605-4d85-b77c-fe8ff202911a&env=default&envRotation=0&autoplay=1&turntable=0&showPreloader=1" frameborder="0" width="100%" height="480"></iframe>
+<br>
+  <!-- Container (Contact Section) -->
+  <div id="contact" class="container-fluid bg-grey text-center">
+    <h2 class="text-center">CONTACT</h2>
+        <p>Contact me and if you're lucky, I'll actually reply.</p>
+        <p><span class="glyphicon glyphicon-map-marker"></span> 66111 Saarbrücken, Deutschland</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +49 15786013589</p>
+        <p><span class="glyphicon glyphicon-envelope"></span> s8sgenge@stud.uni-saarland.de</p>
+        <p><span class="glyphicon glyphicon-link"></span> <a href="http://opencircularity.info/hbksaar-1">Openness makes the world go round!</a></p>
+  </div>
+
+  <!-- Image of location/map -->
+  <footer class="container-fluid text-center">
+    <a href="#index" title="To Top">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    
+  </footer>
+
+
+
+</body>
+
+</html>
