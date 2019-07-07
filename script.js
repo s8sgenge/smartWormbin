@@ -1,3 +1,78 @@
+const xlabels = [];
+const yhumidity = [];
+const ytemperature = [];
+const ymoisture = [];
+async function chartIt() {
+  await getData();
+  const ctx = document.getElementById('chart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: xlabels,
+      datasets: [{
+        label: 'Humidity g/m3',
+        data: yhumidity,
+        backgroundColor: "rgba(105, 190, 148,0.4)"
+      }, {
+        label: 'Temperature °C',
+        data: ytemperature,
+        backgroundColor: "rgba(105, 190, 148,0.4)"
+      }, {
+        label: 'Moisture g/m3',
+        data: ymoisture,
+        backgroundColor: "rgba(105, 190, 148,0.4)"
+      }]
+    }
+  });
+}
+
+function boilingWorm(){
+  document.getElementById("bottom").src="fire.png"
+}
+
+function drowningWorm(){
+  document.getElementById("bottom").src="water.png"
+}
+
+function freezingWorm(){
+  document.getElementById("bottom").src="snow.png"
+}
+
+function dryingWorm(){
+  document.getElementById("bottom").src="cactus.png"
+}
+
+async function getData() {
+  const response = await fetch('smartWormbin.csv');
+  const data = await response.text();
+
+  const table = data.split('\n');
+  table.forEach(row => {
+    const columns = row.split(',');
+    const timestamp = columns[0];
+    xlabels.push(timestamp);
+    const humidity = columns[1];
+    if (humidity > 85) {
+      drowningWorm();
+    }
+    if (humidity < 60) {
+      dryingWorm();
+    }
+    yhumidity.push(humidity);
+    const temperature = columns[2];
+    if (temperature > 25) {
+      boilingWorm();
+    }
+    if (temperature < 15) {
+      freezingWorm();
+    }
+    ytemperature.push(temperature);
+    const moisture = columns[3];
+    ymoisture.push(moisture / 20);
+    console.log(timestamp, humidity);
+  });
+}
+
 $('document').ready(function () {
   var typed = new Typed('#typed', {
     strings: ["IoT Smart Wormbin."],
@@ -69,3 +144,5 @@ function getWidth1() {
 function getWidth2() {
   document.getElementById("width1").value = parseInt(document.getElementById("width2").value) - 3;
 }
+
+

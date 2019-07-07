@@ -57,9 +57,12 @@
           est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
           enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
+      <div class="wormArea">
       <div class="col-sm-4 slideanim">
-        <img src="worm.png" alt="Smiley face" height="390" width="">
+        <img class="worm" src="worm.png" alt="Smiley face" height="390" width="">
+        <img class="bottom" id="bottom" src="" height="390" width="">
       </div>
+    </div>
     </div>
   </div>
 
@@ -76,62 +79,13 @@
       <br>
       <div class="slideanim">
         </canvas><canvas id="chart"></canvas>
-        <script>
-          const xlabels = [];
-          const yhumidity = [];
-          const ytemperature = [];
-          const ymoisture = [];
-          async function chartIt() {
-            await getData();
-            const ctx = document.getElementById('chart').getContext('2d');
-            const myChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: xlabels,
-                datasets: [{
-                  label: 'Humidity g/m3',
-                  data: yhumidity,
-                  backgroundColor: "rgba(105, 190, 148,0.4)"
-                }, {
-                  label: 'Temperature °C',
-                  data: ytemperature,
-                  backgroundColor: "rgba(105, 190, 148,0.4)"
-                }, {
-                  label: 'Moisture g/m3',
-                  data: ymoisture,
-                  backgroundColor: "rgba(105, 190, 148,0.4)"
-                }]
-              }
-            });
-          }
-
-          async function getData() {
-            const response = await fetch('smartWormbin.csv');
-            const data = await response.text();
-
-            const table = data.split('\n');
-            table.forEach(row => {
-              const columns = row.split(',');
-              const timestamp = columns[0];
-              xlabels.push(timestamp);
-              const humidity = columns[1];
-              yhumidity.push(humidity);
-              const temperature = columns[2];
-              ytemperature.push(temperature);
-              const moisture = columns[3];
-              ymoisture.push(moisture / 20);
-              console.log(timestamp, humidity);
-            });
-          }
-
-        </script>
       </div>
     </div>
-
+  </div>
 
 
     <!-- Container (Blueprint Section) -->
-    <div id="blueprint" class="container-fluid">
+    <div id="blueprint" class="container-fluid bg-white">
       <div class="text-center">
         <h2>Blueprint</h2>
         <h4>Get all the materials and tools together and start building your own wormbin</h4>
@@ -208,77 +162,93 @@
 
     <!-- Container (Code Section) -->
     <div id="code" class="container-fluid">
-      <div class="text-center">
-      </div>
       <div class="row slideanim">
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-6 col-xs-12" style="text-align: left;">
           <h4>Arduino Code</h4>
-          <div class="bootstrap-demo">
-            <pre><p>
-#include "DHT.h" //DHT Bibliothek laden
+          <div class="code">
+          <pre><code>
+/*
+  IoT SmartWormbin
+  HBKsaar OMTWGR
+  Read humidity and temperature of DHT11 sensor
+  Read soil moisture of iHaospace
+  Send values over serial port
+            
+  @author Simon Engel
+  @version 0
+*/
+            
+#include "DHT.h"          //load DHT library
+#define DHTPIN 2          //DHT sensor on pin 2
+#define DHTTYPE DHT11     //DHT11 as DHTTYPE
+            
+DHT dht(DHTPIN, DHTTYPE); //call sensor by 'dht'
 
-#define DHTPIN 2 //Der Sensor wird an PIN 2 angeschlossen    
-            
-#define DHTTYPE DHT11    // Es handelt sich um den DHT11 Sensor
-            
-DHT dht(DHTPIN, DHTTYPE); //Der Sensor wird ab jetzt mit „dth“ angesprochen
-            
 void setup() {
-  Serial.begin(9600); // open serial port, set the baud rate to 9600 bps
-  dht.begin(); //DHT11 Sensor starten
+  Serial.begin(9600);     //open serial port, set baud rate to 9600 bps
+  dht.begin();            //start DHT11 sensor
 }
-void loop() {
-  delay(2000); //Zwei Sekunden Vorlaufzeit
-  float Luftfeuchtigkeit = dht.readHumidity(); //Luftfeuchtigkeit auslesen
-            
-  float Temperatur = dht.readTemperature();//Temperatur auslesen
-            
-  float SoilMoisture = analogRead(A0); //Erdfeuchtigkeit auslesen
-            
-  Serial.println(Luftfeuchtigkeit); //über serial port senden
-  Serial.println(Temperatur);
-  Serial.println(SoilMoisture);
-}</p></pre>
 
-          </div>
+void loop() {
+  delay(2000);            //2 seconds delay
+  float humidity = dht.readHumidity(); 
+            
+  float temperature = dht.readTemperature();
+            
+  float soilMoisture = analogRead(A0);
+            
+  Serial.println(humidity);//send values over serial port
+  Serial.println(temperature);
+  Serial.println(soilMoisture);
+}
+</code></pre>
+</div>
         </div>
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-6 col-xs-12" style="text-align: left;">
           <h4>Python serial port reader</h4>
           <div class="bootstrap-demo">
-            <pre><p>
-        import serial
-        import time
-        import csv
-        ser = serial.Serial('COM4')
-        ser.flushInput()
-                  
-        while True:
-          try:
-            humidity = ser.readline()
-            temperature = ser.readline()
-            moisture = ser.readline()
-                  
-            humidity = humidity.decode('ASCII')
-            temperature = temperature.decode('ASCII')
-            moisture = moisture.decode('ASCII')
-                  
-            humidity = str(humidity)
-            humidity = humidity.strip()
-            temperature = str(temperature)
-            temperature = temperature.strip()
-            moisture = str(moisture)
-            moisture = moisture.strip()
-            print(humidity)
-            print(temperature)
-            print(moisture)
-            localtime = time.asctime(time.localtime(time.time()))
-            with open("smartWormbin.csv", "a", newline='') as f:
-              writer = csv.writer(f, delimiter=",")
-              writer.writerow([localtime, humidity,temperature,moisture])
-          except:
-            print("Keyboard Interrupt")
-            break
-    </p></pre
+            <div class="code">
+            <pre><code>
+""" 
+   IoT SmartWormbin
+   HBKsaar OMTWGR
+   Listen to serial port COM4 and write data to csv file
+                
+   @author Simon Engel
+   @version 0
+"""
+            
+import serial, time, csv        #import necessary modules
+ser = serial.Serial('COM4')     #arduino is connected to COM4 (may vary)
+ser.flushInput()
+                
+while True:
+  try:
+    humidity = ser.readline()   #read humidity, temperature and moisture
+    temperature = ser.readline()
+    moisture = ser.readline()
+                
+    #decode ASCII value, cast to string, remove whitespace using strip
+    humidity = str(humidity.decode('ASCII')).strip()
+    temperature = str(temperature.decode('ASCII')).strip()
+    moisture =str(moisture.decode('ASCII')).strip()
+                
+    print(humidity)             #printing values for terminal use
+    print(temperature)
+    print(moisture)
+                
+    #create timestamp
+    localtime = time.asctime(time.localtime(time.time())) 
+                
+    #create smartWormbin.csv and append data
+    with open("smartWormbin.csv", "a", newline='') as f:
+      writer = csv.writer(f, delimiter=",")
+      writer.writerow([localtime, humidity,temperature,moisture])
+  except:
+    print("Keyboard Interrupt")
+    break
+</code></pre>
+</div>
       </div>
     </div>
   </div>
@@ -299,7 +269,7 @@ void loop() {
           <br>
           <br>
           <br>
-          <img class="img-responsive" src="Untitled Sketch 2_Steckplatine - Kopie.png" alt="">
+          <img class="img-responsive" src="schematic.png" alt="">
         </div>
       </div>
     </div>
