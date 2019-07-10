@@ -8,7 +8,7 @@
 """
 
 import serial, datetime, csv        #import necessary modules
-ser = serial.Serial('COM4')     #arduino is connected to COM4 (may vary)
+ser = serial.Serial('/dev/ttyACM0')     #arduino is connected to COM4 (may vary)
 ser.flushInput()
 
 while True:

@@ -10,7 +10,7 @@ async function chartIt() {
     data: {
       labels: xlabels,
       datasets: [{
-        label: 'Humidity g/m3',
+        label: 'Humidity %',
         data: yhumidity,
         backgroundColor: "rgba(105, 190, 148,0.4)"
       }, {
