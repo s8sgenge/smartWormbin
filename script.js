@@ -30,34 +30,38 @@ async function chartIt() {
 async function getData() {
   const response = await fetch('data/smartWormbin.csv');
   const data = await response.text();
+  
+  let humidity = 0;
+  let temperature = 0;
 
   const table = data.split('\n');
+  table.shift();
   table.forEach(row => {
     const columns = row.split(',');
     const timestamp = columns[0];
     xlabels.push(timestamp);
-    const humidity = columns[1];
-    if (humidity > 85) {
-      drowningWorm();
-    }
-    if (humidity < 60) {
-      dryingWorm();
-    }
+     humidity = columns[1];
     yhumidity.push(humidity);
-    const temperature = columns[2];
-    if (temperature > 25) {
-      boilingWorm();
-    }
-    if (temperature < 15) {
-      freezingWorm();
-    }
+     temperature = columns[2];
     ytemperature.push(temperature);
-    const moisture = columns[3];
-    ymoisture.push(moisture / 20);
-    if(temperature > 15 && temperature < 25 && humidity <85 && humidity >60){
-      document.getElementById("bottom").src="";
-    }
+     moisture = columns[3];
+    ymoisture.push((moisture/20));
   });
+  if (humidity > 85) {
+    drowningWorm();
+  }
+  if (humidity < 55) {
+    dryingWorm();
+  }
+  if (temperature > 25) {
+    boilingWorm();
+  }
+  if (temperature < 15) {
+    freezingWorm();
+  }
+  if(temperature >= 15 && temperature <= 25 && humidity <=85 && humidity >= 60){
+    document.getElementById("bottom").src="";
+}
 }
 
 $('document').ready(function () {
@@ -133,17 +137,29 @@ function getWidth2() {
 }
 
 function boilingWorm(){
+  let audio = new Audio('audio/scream.mp3');
+  audio.volume = 0.3;
+  audio.play();
   document.getElementById("bottom").src="fire.png";
 }
 
 function drowningWorm(){
+  let audio = new Audio('audio/bubbling.mp3');
+  audio.volume = 0.2;
+  audio.play();
   document.getElementById("bottom").src="water.png";
 }
 
 function freezingWorm(){
+  let audio = new Audio('audio/sneeze.mp3');
+  audio.volume = 0.2;
+  audio.play();
   document.getElementById("bottom").src="snow.png";
 }
 
 function dryingWorm(){
+  let audio = new Audio('audio/cough.mp3');
+  audio.volume = 0.2;
+  audio.play();
   document.getElementById("bottom").src="cactus.png";
 }

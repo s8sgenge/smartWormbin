@@ -1,0 +1,218 @@
+[
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 0,
+      "temperature": 0,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 602,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 601,
+      "temperature": 32,
+      "moisture": 24.7
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 601,
+      "temperature": 32,
+      "moisture": 24.7
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 601,
+      "temperature": 32,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 601,
+      "temperature": 32,
+      "moisture": 24.7
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 600,
+      "temperature": 32,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 600,
+      "temperature": 32,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:00",
+      "humidity": 600,
+      "temperature": 33,
+      "moisture": 24.8
+    },
+    {
+      "timestamp": "Jul/09/2019 12:01",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 602
+    },
+    {
+      "timestamp": "Jul/09/2019 12:01",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 601
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 601
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.8,
+      "moisture": 599
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 599
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 473
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 399
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 422
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 32,
+      "temperature": 24.9,
+      "moisture": 600
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 33,
+      "temperature": 24.9,
+      "moisture": 601
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 33,
+      "temperature": 24.9,
+      "moisture": 601
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 34,
+      "temperature": 24.9,
+      "moisture": 600
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 34,
+      "temperature": 25,
+      "moisture": 602
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 41,
+      "temperature": 25,
+      "moisture": 602
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 50,
+      "temperature": 25.1,
+      "moisture": 601
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 54,
+      "temperature": 25.3,
+      "moisture": 600
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 52,
+      "temperature": 25.3,
+      "moisture": 600
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 48,
+      "temperature": 25.3,
+      "moisture": 600
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 44,
+      "temperature": 25.3,
+      "moisture": 603
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 42,
+      "temperature": 25.4,
+      "moisture": 603
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 41,
+      "temperature": 25.4,
+      "moisture": 602
+    },
+    {
+      "timestamp": "Jul/09/2019 12:02",
+      "humidity": 61,
+      "temperature": 20,
+      "moisture": 602
+    }
+   ]
