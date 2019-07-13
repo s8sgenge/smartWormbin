@@ -2,6 +2,7 @@ const xlabels = [];
 const yhumidity = [];
 const ytemperature = [];
 const ymoisture = [];
+
 async function chartIt() {
   await getData();
   const ctx = document.getElementById('chart').getContext('2d');
@@ -26,24 +27,8 @@ async function chartIt() {
   });
 }
 
-function boilingWorm(){
-  document.getElementById("bottom").src="fire.png"
-}
-
-function drowningWorm(){
-  document.getElementById("bottom").src="water.png"
-}
-
-function freezingWorm(){
-  document.getElementById("bottom").src="snow.png"
-}
-
-function dryingWorm(){
-  document.getElementById("bottom").src="cactus.png"
-}
-
 async function getData() {
-  const response = await fetch('smartWormbin.csv');
+  const response = await fetch('data/smartWormbin.csv');
   const data = await response.text();
 
   const table = data.split('\n');
@@ -69,7 +54,9 @@ async function getData() {
     ytemperature.push(temperature);
     const moisture = columns[3];
     ymoisture.push(moisture / 20);
-    console.log(timestamp, humidity);
+    if(temperature > 15 && temperature < 25 && humidity <85 && humidity >60){
+      document.getElementById("bottom").src="";
+    }
   });
 }
 
@@ -145,4 +132,18 @@ function getWidth2() {
   document.getElementById("width1").value = parseInt(document.getElementById("width2").value) - 3;
 }
 
+function boilingWorm(){
+  document.getElementById("bottom").src="fire.png";
+}
 
+function drowningWorm(){
+  document.getElementById("bottom").src="water.png";
+}
+
+function freezingWorm(){
+  document.getElementById("bottom").src="snow.png";
+}
+
+function dryingWorm(){
+  document.getElementById("bottom").src="cactus.png";
+}
